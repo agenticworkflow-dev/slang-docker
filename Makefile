@@ -47,7 +47,7 @@ run-minicpm:
 	  --host 0.0.0.0
 
 
-run-llavaone:
+run-llavanext:
 	docker run -it --rm \
 	-p 30000:30000 \
 	-v /media/hf_cache:/root/.cache/huggingface/ \
@@ -56,7 +56,8 @@ run-llavaone:
 	python3 -m sglang.launch_server \
 	  --trust-remote-code \
 	  --mem-fraction-static=0.9 \
-	  --model-path lmms-lab/llava-onevision-qwen2-7b-ov \
-	  --chat-template=chatml-llava \
+	  --model-path lmms-lab/llama3-llava-next-8b \
+	  --chat-template=llava_llama_3 \
 	  --port 30000 \
 	  --host 0.0.0.0
+
