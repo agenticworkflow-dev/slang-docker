@@ -19,7 +19,7 @@ test-local:
 	bash
 
 
-run-minicpm:
+run-minicpm-1b:
 	docker run -it --rm \
 	-p 30000:30000 \
 	-v /media/hf_cache:/root/.cache/huggingface/ \
@@ -29,6 +29,20 @@ run-minicpm:
 	  --trust-remote-code \
 	  --mem-fraction-static=0.7 \
 	  --model-path openbmb/MiniCPM-1B-sft-bf16 \
+	  --port 30000 \
+	  --host 0.0.0.0
+
+
+run-minicpm:
+	docker run -it --rm \
+	-p 30000:30000 \
+	-v /media/hf_cache:/root/.cache/huggingface/ \
+	--gpus all \
+	$(REPO):$(VERSION) \
+	python3 -m sglang.launch_server \
+	  --trust-remote-code \
+	  --mem-fraction-static=0.7 \
+	  --model-path openbmb/MiniCPM3-4B \
 	  --port 30000 \
 	  --host 0.0.0.0
 
